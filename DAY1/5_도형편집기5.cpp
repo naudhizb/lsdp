@@ -2,6 +2,17 @@
 #include <iostream>
 #include <vector>
 
+// 리팩토링 용어
+// "replace conditional with polymorphism" 이라는 기법이 있습니다.
+// => if, switch 문이 있다면 "가상함수"로 바꿀수 없는지 생각해 보자.. 
+
+// 디자인 패턴 : 1994년 4명의 개발자가 기존에 존재 하던 디자인 기법이 이름을 붙인것
+
+//  23개의 이름을 발표.. "GoF's Design Pattern" 책
+//						 "Gangs Of Four"
+
+// prototype pattern : 객체를 만들고, 복사본으로 새로운 객체를 만드는 기술
+//					clone() 가상함수
 
 class Shape
 {
@@ -55,6 +66,12 @@ int main()
 	{
 		int cmd;
 		std::cin >> cmd;
+
+		// 도전과제 1. 객체의 생성을 OCP를 만족하게 할수없을까 ?
+		// ==> 추상 팩토리 패턴을 알면 됩니다.
+
+		// 도전과제 2. Undo/Redo 를 하려면 어떻게 해야 할까 ?
+		// ==> Command 패턴 이라는 디자인 패턴을 사용하면 됩니다.
 
 		if (cmd == 1) v.push_back(new Rect);
 
