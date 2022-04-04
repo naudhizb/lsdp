@@ -60,6 +60,11 @@ public:
 	{
 		return data.size() < value && isdigit(c);
 	}
+
+	bool iscomplete(const string& data) override
+	{
+		return data.size() == value;
+	}
 };
 
 int main()
