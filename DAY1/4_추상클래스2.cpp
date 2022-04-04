@@ -3,6 +3,14 @@
 using namespace std;
 
 
+// 강한 결합( tightly coupling )
+// 하나의 클래스가 다른 클래스 사용시
+// 클래스이름을 직접 사용하는 것
+
+// 교체 불가능한, 경직된 디자인, 확장성이 없다.
+
+// OCP 만족 못함
+
 class Camera
 {
 public:	
