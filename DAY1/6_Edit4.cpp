@@ -73,6 +73,9 @@ int main()
 	LimitDigitValidator v(5);
 	e.setValidator(&v); // 유효성 확인을 위한 객체 전달
 
+	LimitDigitValidator v2(15);
+	e.setValidator(&v2);
+
 	while (1)
 	{
 		cout << e.getData() << endl;
@@ -80,3 +83,24 @@ int main()
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// template method 패턴			strategy(전략) 패턴
+// 상속 기반 패턴				포함기반의 패턴
+// 실행시간 교체 안됨			실행시간에 교체 가능	
+// validation정책 독점			모든 입력도구에서 validation정책 사용가능

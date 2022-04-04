@@ -57,6 +57,9 @@ int main()
 {
 //	Edit e;
 	NumEdit e;
+//	AddressEdit e2;  // 기존 edit의 validation 정책이 변경이 아닌
+					// 다른 정책을 가진 새로운 edit ..
+
 	while (1)
 	{
 		cout << e.getData() << endl;
