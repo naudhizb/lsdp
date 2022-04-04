@@ -6,22 +6,24 @@
 // vector에 전달할 메모리 할당기
 template<typename T> struct MyAlloc
 {
-	T* allocate(std::size_t sz)
+	inline T* allocate(std::size_t sz)
 	{
 		std::cout << sz << "개 할당" << std::endl;
-
 		return static_cast<T*>(malloc(sizeof(T)*sz));
 	}
-
-	void deallocate(T* p, std::size_t sz)
+	inline void deallocate(T* p, std::size_t sz)
 	{
 		std::cout << sz << "개 해지" << std::endl;
-
 		free(p);
 	}
+
+	// 위 2개 함수외에 아래 3개가 더있어야하니다.
+	MyAlloc() {}
+
+	typedef T value_type;
+
+	template<typename U> MyAlloc(const U&) {} // 템플릿 생성자라는 개념입니다.
 };
-
-
 
 int main()
 {
