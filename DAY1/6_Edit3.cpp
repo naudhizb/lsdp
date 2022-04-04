@@ -12,9 +12,11 @@ using namespace std;
 struct IValidator
 {
 	virtual bool validate(const string& data, char c) = 0;
-	virtual bool iscomplete(const string& data) { return true; }
+	virtual bool iscomplete(const string& data)  { return true; }
 	virtual ~IValidator() {}
 };
+//주민등록번호 : 901    1     확인
+
 class Edit
 {
 	string data;
@@ -32,9 +34,9 @@ public:
 		{
 			char c = _getch();
 
-			if (c == 13) break;
+			if (c == 13 && (pVal == 0 || pVal->iscomplete(data))   ) break;
 
-			if (isdigit(c))
+			if ( pVal == 0 || pVal->validate(data, c) ) //유효성 확인을 다른클래스에 위임(delegate)
 			{
 				cout << c;
 				data.push_back(c);
