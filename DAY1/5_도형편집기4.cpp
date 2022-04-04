@@ -17,12 +17,14 @@
 class Shape
 {
 public:
+	int type;
 	virtual void draw() { std::cout << "draw shape" << std::endl; }
 };
 
 class Rect : public Shape
 {
 public:
+	Rect() { type = 1; }
 	void draw() override { std::cout << "draw rect" << std::endl; }
 };
 
@@ -68,6 +70,14 @@ int main()
 
 			// k번째 도형의 복제본을 만들어서 v 끝에 추가합니다.
 			// 그런데, k번째 도형이 뭘까요 ?
+
+			// 아래 처럼 만들면 OCP를 만족 할수 없습니다.
+			// 객체지향 세계에서는 권장하지 않는 코드
+			switch (v[k]->type)
+			{
+			case 1: v.push_back(new Rect(*v[k])); break;
+			case 2: v.push_back(new Circle(*v[k])); break;
+			}
 		}
 	}
 }
