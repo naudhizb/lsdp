@@ -31,21 +31,34 @@ public:
 	// popup 메뉴 선택시 해야 할일을 생각해 보세요
 	void command()
 	{
-		int sz = v.size();
-
-		for (int i = 0; i < sz; i++)
+		while (1)
 		{
-			std::cout << i + 1 << ". " << v[i]->get_title() << std::endl;
-		}
-		std::cout << sz + 1 << ". 종료" << std::endl;
+			system("cls");
+			int sz = v.size();
 
-		std::cout << "메뉴를 선택하세요 >> ";
+			for (int i = 0; i < sz; i++)
+			{
+				std::cout << i + 1 << ". " << v[i]->get_title() << std::endl;
+			}
+			std::cout << sz + 1 << ". 종료" << std::endl;
+
+			std::cout << "메뉴를 선택하세요 >> ";
 		
-		int cmd;
-		std::cin >> cmd;
+			int cmd;
+			std::cin >> cmd;
 
-		// 선택된 메뉴 실행
-		v[cmd - 1]->command();
+			if (cmd < 1 || cmd > sz + 1)
+				continue;
+
+			if (cmd == sz + 1) // 종료
+				break;
+
+			// 선택된 메뉴 실행
+			v[cmd - 1]->command();
+
+		}
+
+
 	}
 };
 
