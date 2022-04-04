@@ -6,22 +6,25 @@
 //         있어야 한다.
 //         그래야, Shape* 로 모든 도형을 묶을때 해당 특징을 사용할수 있다.
 
+// 핵심 4. 기반 클래스 함수중 파생 클래스가  재정의 하는 함수는
+//			반드시 가상함수가 되어야 한다.
+
 class Shape
 {
 public:
-	void draw() { std::cout << "draw shape" << std::endl; }
+	virtual void draw() { std::cout << "draw shape" << std::endl; }
 };
 
 class Rect : public Shape
 {
 public:
-	void draw() { std::cout << "draw rect" << std::endl; }
+	void draw() override { std::cout << "draw rect" << std::endl; }
 };
 
 class Circle : public Shape
 {
 public:
-	void draw() { std::cout << "draw circle" << std::endl; }
+	void draw() override { std::cout << "draw circle" << std::endl; }
 };
 
 int main()
