@@ -40,10 +40,10 @@ public:
 	// 반드시 파생클래스에서 명시적으로 기반 클래스 생성자를 호출해야 합니다.
 	Derived() : Base(0) {}      
 	Derived(int a) : Base(a) {}  
-
-
 };
 int main()
 {
 	Derived d(1); // call Derived::Derived(int)
 }
+
+// godbolt.org

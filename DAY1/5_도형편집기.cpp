@@ -29,3 +29,4 @@ int main()
 	std::vector<Shape*> v;
 }
 
+// 10:55분에 이어집니다.
