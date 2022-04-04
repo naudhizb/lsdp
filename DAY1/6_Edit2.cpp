@@ -30,7 +30,7 @@ public:
 
 			if (c == 13) break;
 
-			if (isdigit(c))
+			if ( validate(c) )  // 값의 유효성을 확인하는 가상함수호출
 			{
 				cout << c;
 				data.push_back(c);
@@ -41,10 +41,21 @@ public:
 		return data;
 	}
 };
+// 이제 Validation 정책을 변경하려면 "Edit"의 파생클래스를 설계해서
+// validate() 가상함수를 재정의하면 됩니다.
+class NumEdit : public Edit
+{
+public:
+	bool validate(char c) override
+	{
+		return isdigit(c);
+	}
+};
 
 int main()
 {
-	Edit e;
+//	Edit e;
+	NumEdit e;
 	while (1)
 	{
 		cout << e.getData() << endl;
