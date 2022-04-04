@@ -1,3 +1,5 @@
+#include <iostream>
+
 // upcasting3.cpp
 class Animal 
 {
