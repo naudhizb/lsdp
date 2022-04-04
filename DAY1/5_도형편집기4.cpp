@@ -36,7 +36,7 @@ class Triangle : public Shape
 {
 public:
 	void draw() override { std::cout << "draw triangle" << std::endl; }
-}
+};
 
 int main()
 {
