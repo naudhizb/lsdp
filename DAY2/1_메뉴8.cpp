@@ -100,6 +100,23 @@ int main()
 	root->command();
 }
 
+/*
+void foo(int n) // int n = 10
+{
+}
 
+void goo(std::shared_ptr<int> p) {} // shared_ptr<int> p = new int
+								    // shared_ptr<int> p = std::shared_ptr<int>(new int)
 
+int main()
+{
+	int b1 = 10; // 복사 초기화
+	int b2(10);  // 직접 초기화
 
+	foo(10);
+	goo(new int); // error
+	goo(std::shared_ptr<int>(new int)); // ok
+	goo(std::make_shared<int>(0));     // ok
+
+}
+*/
