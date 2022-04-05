@@ -81,22 +81,29 @@ public:
 // 메뉴이벤트를 처리하고 싶은 모든 클래스는 아래 인터페이스를 구현해야 한다.
 struct IMenuListener
 {
-	virtual void Command() = 0;
+	virtual void Command(int id) = 0;
 	virtual ~IMenuListener() {}
 };
 
 class MenuItem : public BaseMenu
 {
 	int id;
-	IMenuListener* pListener = 0;
+//	IMenuListener* pListener = 0;
+	std::vector<IMenuListener*> v;
 public:
-	void setListener(IMenuListener* p) { pListener = p; }
+	void addListener(IMenuListener* p) { v.push_back(p); }
 
-	MenuItem(const std::string& s, int n) : BaseMenu(s), id(n) {}
+	MenuItem(const std::string& s, int n, IMenuListener* p = 0) 
+		: BaseMenu(s), id(n) 
+	{
+		if (p != 0)
+			v.push_back(p);
+	}
 
 	void command()
 	{
-		pListener->Command();
+		for( int i = 0; i < v.size(); i++)
+			v[i]->Command(id);
 	}
 };
 
@@ -104,8 +111,12 @@ public:
 class Camera : public IMenuListener
 {
 public:
-	void Command() override
+	void Command(int id) override
 	{
+		switch (id)
+		{
+		case 0: break;
+		}
 		std::cout << "Camera Command" << std::endl;
 	}
 };
@@ -114,10 +125,10 @@ int main()
 {
 	Camera cam;
 	MenuItem m1("HD", 11);
-	MenuItem m2("FHD", 12);
+	m1.addListener(&cam);
 
-	m1.setListener(&cam);
-	m2.setListener(&cam);
+	MenuItem m2("FHD", 12, &cam);
+//	m2.addListener(&다른객체);
 
 	m2.command(); // 메뉴 선택
 }
