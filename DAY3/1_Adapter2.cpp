@@ -67,7 +67,13 @@ public:
 		TextView::Show();
 	}
 };
+// 상속 : 클래스에 기능 추가, 클래스의 인터페이스 변경
+// 포함 : 객체에 기능추가(Decorator), 객체의 인터페이스 변경(Adapter) 
 
+// 클래스 어답터 : 다중 상속이 널리 사용
+// 객체 어답터   : 포함 + 인터페이스 상속(요구조건, Shape)
+
+// 객체 어답터
 class Text2 :  public Shape
 {
 	TextView* txtView; // 포인터 또는 참조이어야 합니다.
