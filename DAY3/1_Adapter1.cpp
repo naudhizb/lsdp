@@ -59,6 +59,13 @@ public:
 // 1. Shape 로 부터 파생되어야 한다.
 // 2. 반드시 Draw를 만들어야 한다.
 
+// Adapter 패턴 : 기존 클래스의 인터페이스(함수이름)를 수정
+//				  시스템이 요구하는 인터페이스로 변경하는 것
+//		"인터페이스의 불일치를 해결"
+
+// 1. 클래스 어답터
+// 2. 객체 어답터.
+
 class Text : public TextView, public Shape
 {
 public:
@@ -77,8 +84,10 @@ int main()
 	
 	Text txt("Hello");
 	v.push_back(&txt);
-
 	v[0]->Draw();
+
+	TextView tv("hello"); // tv 는 TextView 타입의 객체입니다.
+	v.push_back(&tv); // ???
 }
 
 
