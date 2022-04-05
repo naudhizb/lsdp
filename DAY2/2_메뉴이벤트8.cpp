@@ -109,6 +109,15 @@ int main()
 	MenuItem m2("FHD", 12, std::bind(&f1, 12) );
 	MenuItem m3("UHD", 13, std::bind(&f1, 13));
 
+	// m1에 핸들러 f4 추가 해보세요..인자는 아무 숫자나 고정
+	m1.addHandler(std::bind(&f4, 1, 2, 3, 4));
+
+	// m2 에 Camera::take 추가 해보세요.
+	Camera cam;
+	m2.addHandler(std::bind(&Camera::take, &cam, 1, 2));
+
+	m3.addHandler([]() { std::cout << "lambda event handler" << std::endl; });
+
 	m1.command();
 	m2.command(); // 메뉴 선택
 	m3.command();
