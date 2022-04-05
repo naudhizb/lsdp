@@ -31,13 +31,19 @@ int main()
 	fp = std::bind(&f1, 5);
 	fp(); // f1(5)
 
-	fp = std::bind(&f2, ? );
+	fp = std::bind(&f2, 5, 30 );
 	fp(); // f2(5,30)
 
 	std::function<void(int)> fp2;
 
-	fp2 = std::bind(&f4, ? );
+	fp2 = std::bind(&f4, 3, 7, _1, 9 );
 	fp2(5); // f4(3, 7, 5, 9);
+
+	//-----------
+	// 멤버 함수도 됩니다.
+//	Camera cam;
+//	fp = std::bind(&Camera::take, &cam); //std::bind(멤버함수, 객체, 인자들..)
+//  fp(); // cam.take()
 }
 
 
