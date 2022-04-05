@@ -6,6 +6,12 @@
 // 1. 오직 한개의 객체만 생성할수있다.
 // 2. 프로그램의 어디서든지 동일한 방법으로 접근하다.
 
+// 비판론자 : 결국 전역변수이다... 전역변수는 좋지 않다.
+
+// meyer's singleton
+// => effecitive -C++의 저자인 scott mayer 가 만든 코드
+//    가장 훌륭하고, 멀티스레드에도 안전합니다.
+
 class Cursor
 {
 	// 규칙 1. private 생성자
@@ -24,6 +30,8 @@ public:
 		return instance;
 	}
 };
+
+
 int main()
 {
 	Cursor& c1 = Cursor::getInstance();
