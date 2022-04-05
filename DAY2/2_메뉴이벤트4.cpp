@@ -103,13 +103,19 @@ public:
 void f1() { std::cout << "f1" << std::endl; }
 void f2() { std::cout << "f2" << std::endl; }
 
+class Camera 
+{
+public:
+	void take() {}
+};
+
 int main()
 {
 	MenuItem m1("HD", 11);
 	MenuItem m2("FHD", 12);
 	
 	m1.setHandler(&f1);
-	m2.setHandler(&f2);
+//	m2.setHandler(&Camera::take);
 
 	m2.command(); // 메뉴 선택
 }
