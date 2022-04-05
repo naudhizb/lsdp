@@ -1,7 +1,15 @@
 #include <iostream>
 #include <mutex>
 
+// github.com/aosp-mirror     // android open source project
 
+// libutils/include/utils 에서 Singleton.h
+
+// CRTP ( Curiosly Recurring Template Pattern )
+// 기반 클래스가 템플릿 인데, 파생 클래스가 자신의 이름을 
+// 기반 클래스 템플릿 인자로 전달하는 것
+
+// 기반 클래스가 미래에 만들어질 파생 클래스 이름을 사용할수 있게 된다.
 
 template<typename T> 
 class Singleton
