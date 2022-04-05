@@ -28,13 +28,13 @@ private:
 public:
 	static Cursor& getInstance()
 	{
-		lock_guard<std::mutex> lg(mtx);
+//		lock_guard<std::mutex> lg(mtx); // mtx.lock()
+		std::lock_guard<std::mutex> lg(mtx);
 
-//		mtx.lock();
+		//		mtx.lock();
 		if (pinstance == 0)
 			pinstance = new Cursor;
-//		mtx.unlock();
-
+		//		mtx.unlock();
 		return *pinstance;
 	}
 };
@@ -54,8 +54,16 @@ int main()
 
 
 
+/*
+if (m.try_lock())
+{
+	// lock..
+}
+else
+{
 
-
+}
+*/
 
 
 
