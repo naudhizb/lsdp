@@ -27,6 +27,9 @@ public:
 		return image_map[url];
 	}
 };
+std::map<std::string, Image*>  Image::image_map;
+
+
 
 int main()
 {
@@ -36,6 +39,8 @@ int main()
 	Image* img2 = Image::Create("www.naver.com/a.png");
 	img2->Draw();
 
+	std::cout << img1 << std::endl;
+	std::cout << img2 << std::endl;
 }
 
 
