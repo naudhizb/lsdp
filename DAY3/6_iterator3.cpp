@@ -79,4 +79,5 @@ int main()
 	p->MoveNext();
 	std::cout << p->GetObject() << std::endl;
 
+	delete p; // << == 이 코드 필요.. 
 }
