@@ -20,14 +20,14 @@ public:
 	void doRun() override { std::cout << "fast run" << std::endl; }
 };
 
-
 int main()
 {
 	Charater* p = new Charater;
 	p->run();
 	p->attack();
 
-	p = new FastItemCharacter;
+	p = new FastItemCharacter; // 기존 객체의 동작변경이 아닌
+							   // 동작이 변경된 새로운 객체를 생성한것!!
 	p->run();
 }
 
