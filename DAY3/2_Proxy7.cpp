@@ -23,7 +23,7 @@ public:
 
 	// 스마트 포인터의 핵심 : -> 와 * 연산자 재정의
 	T* operator->() { return ptr; }
-	T& operator&() { return *ptr; }
+	T& operator*() { return *ptr; }
 };
 
 int main()
