@@ -27,10 +27,12 @@ class MP3
 {
 	IMP3* impl;
 public:
-	MP3(IMP3* p)
+	MP3(IMP3* p = 0)
 	{
 		if (p == 0)
 			impl = new IPod;
+		else
+			p = impl;
 	}
 	// 추상층에서는 구현계층을 다시 사용한다.
 	void Play() { impl->Play(); }
