@@ -36,25 +36,37 @@ public:
 
 		switch (msg)
 		{
-		case WM_LBUTTONDOWN: pThis->LButtonDown(); break;
+		case WM_LBUTTONDOWN: pThis->FireLButtonDown(); break;
 		case WM_KEYDOWN:     pThis->KeyDown(); break;
 		}
 		return 0;
 	}
-	virtual void LButtonDown() {}
-	virtual void KeyDown() {}
+
+	void FireLButtonDown()
+	{
+		// 1. 자신이 처리를 시도
+		if (LButtonDown() == true)
+			return;
+
+		//2. 부모윈도우가 있다면 전달
+		if (parent != 0)
+			parent->FireLButtonDown();
+	}
+
+	virtual bool LButtonDown() { return false; }
+	virtual bool KeyDown()     { return false; }
 };
 
 
 class MyWindow : public CWnd
 {
 public:
-	void LButtonDown() { cout << "LBUTTON" << endl; }
+	bool LButtonDown() { cout << "LBUTTON" << endl; return true; }
 };
 class ImageView : public CWnd
 {
 public:
-	void LButtonDown() { cout << "ImageView LBUTTON" << endl; }
+	bool LButtonDown() { cout << "ImageView LBUTTON" << endl; return true; }
 };
 
 int main()
@@ -64,11 +76,9 @@ int main()
 
 	ImageView view;
 	view.Create();
-
 	w.AddChild(&view); // view 를 w의 자식윈도우로 붙인다.
 
 	ec_process_message();
 }
-
 
 
