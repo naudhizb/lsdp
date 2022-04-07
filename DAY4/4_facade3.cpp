@@ -68,8 +68,8 @@ class TCPServer
 {
 	NetworkInit init;
 
-	Socket sock(SOCK_STREAM); // TCP 서버
-public:
+	Socket sock{ SOCK_STREAM }; // TCP 서버
+public:   
 	void Start(const char* ip, short port )
 	{
 		IPAddress addr(ip, port);
