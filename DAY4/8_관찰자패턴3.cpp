@@ -16,8 +16,11 @@ struct IGraph
 class Subject
 {
 	vector<IGraph*> v;
+protected:
+	Subject() {}
+
 public:
-	void attach(IGraph* p)
+	void attach(IGraph* p) 
 	{ 
 		v.push_back(p); 
 		p->pSubject = this;
@@ -52,6 +55,8 @@ public:
 class BarGraph : public IGraph
 {
 public:
+	Table* getTable() { return static_cast<Table*>(pSubject); }
+
 	void Update(int n) override
 	{
 		// Table이 변경되었으므로
