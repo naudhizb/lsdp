@@ -5,6 +5,11 @@
 #include <vector>
 using namespace std::placeholders;
 
+// 객체간의 관계가 복잡하다면, 중재자를 만들어라
+// M:N의 관계를 1 : N의 관계로 변경하는 패턴.
+
+
+
 class NotificationCenter
 {
 	typedef std::function<void(void*)> HANDLER;
