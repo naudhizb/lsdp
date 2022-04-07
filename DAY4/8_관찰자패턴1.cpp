@@ -12,9 +12,6 @@ struct IGraph
 	virtual ~IGraph() {}
 };
 
-
-
-
 class Table
 {
 	vector<IGraph*> v;
@@ -33,8 +30,8 @@ public:
 		while (1)
 		{
 			cout << "Data >>";
-			cin >> value;
-			notify(value);
+			cin >> value; // 데이타가 수정되었으므로
+			notify(value); // 모든 그래프에 알려준다.
 		}
 	}
 };
@@ -53,10 +50,24 @@ public:
 	}
 };
 
+class PieGraph : public IGraph
+{
+public:
+	void Update(int n) override
+	{
+		cout << "Pie Graph : ";
+
+		for (int i = 0; i < n; i++)
+			cout << ")";
+
+		cout << endl;
+	}
+};
 int main()
 {
 	Table t;
 	PieGraph pg; t.attach(&pg);
+	BarGraph bg; t.attach(&bg);
 	t.edit();
 }
 
