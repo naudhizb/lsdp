@@ -4,6 +4,8 @@
 #include <vector>
 using namespace std;
 
+// 객체의 캡슐화를 위배 하지 않으면서
+// 객체의 상태를 저장했다가 나중에 복구 할수 있도록 한다.
 class Graphics
 {
 	int penWidth = 1;
@@ -14,7 +16,6 @@ class Graphics
 	{
 		int penWidth;
 		int penColor;
-
 		Memento(int w, int c) : penWidth(w), penColor(c) {}
 	};
 
@@ -34,7 +35,6 @@ public:
 		penColor = state_map[token]->penColor;
 		penWidth = state_map[token]->penWidth;
 	}
-
 
 	void DrawLine(int x1, int y1, int x2, int y2)
 	{
