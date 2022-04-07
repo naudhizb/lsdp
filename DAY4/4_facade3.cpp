@@ -68,8 +68,11 @@ class TCPServer
 {
 	NetworkInit init;
 
-	Socket sock{ SOCK_STREAM }; // TCP 서버
-public:   
+//	Socket sock{ SOCK_STREAM }
+	Socket sock;
+public:
+	TCPServer() : sock(SOCK_STREAM) {}
+
 	void Start(const char* ip, short port )
 	{
 		IPAddress addr(ip, port);
@@ -85,3 +88,15 @@ int main()
 	server.Start("127.0.0.1", 4000);
 
 }
+
+//-------------------
+/*
+int n(0); // ok
+
+struct Point
+{
+//	int x = 0; // C++11
+/	int z(0); // error 구조체 멤버 초기화시 
+	int y{ 0 }; // 
+};
+*/
