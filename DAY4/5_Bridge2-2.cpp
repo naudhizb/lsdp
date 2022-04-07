@@ -1,4 +1,4 @@
-// PIMPL 이라는 이름의 기술
+// PIMPL 이라는 이름의 기술 ( Pointer to IMPLementation )
 // 컴파일 시간 Bridge 패턴 활용
 // 1. 컴파일 속도를 빠르게 하고
 // 2. 배포시 헤더 파일의 내용을 감출수 있다.
