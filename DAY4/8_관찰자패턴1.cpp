@@ -4,6 +4,13 @@
 using namespace std;
 
 
+// 관찰자(Observer) 
+// 객체간의 1 : N 의 관계를 설정하고
+// 객체(1)이 변경되었을때 등록된 모든 객체들에게 통보한다.
+
+
+
+
 
 // 모든 그래프의 인터페이스
 struct IGraph
