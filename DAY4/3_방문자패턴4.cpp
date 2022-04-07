@@ -114,7 +114,17 @@ public:
 	}
 };
 
-
+// popupmenu 의 타이틀만 변경하는 방문자
+struct PopupMenuTitleChangeVisitor : public IMenuVisitor
+{
+	void Visit(MenuItem* p) override {}
+	void Visit(PopupMenu* p) override 
+	{
+		std::string s = p->getTitle();
+		s = "[ " + s + " ]";
+		p->setTitle(s);
+	}
+};
 
 int main()
 {
@@ -123,7 +133,8 @@ int main()
 	PopupMenu* p2 = new PopupMenu("해상도 변경");
 
 	menubar->addMenu(p1);
-	menubar->addMenu(p2);
+//	menubar->addMenu(p2);
+	p1->addMenu(p2);
 
 	p1->addMenu(new MenuItem("RED", 11));
 	p1->addMenu(new MenuItem("GREEN", 12));
@@ -133,6 +144,10 @@ int main()
 	p2->addMenu(new MenuItem("HD", 21));
 	p2->addMenu(new MenuItem("FHD", 22));
 	p2->addMenu(new MenuItem("UHD", 23));
+
+	PopupMenuTitleChangeVisitor tc;
+	menubar->Accept(&tc);
+
 
 	// 시작하려면어떻게 할까요 ?
 	menubar->command();
